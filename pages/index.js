@@ -1,42 +1,26 @@
-import Link from 'next/link'
-import dbConnect from '../lib/dbConnect'
-import Pet from '../models/Pet'
+import Link from 'next/link';
+import dbConnect from '../lib/dbConnect';
+import Stadium from '../models/Stadium';
 
-const Index = ({ pets }) => (
+const Index = ({ stadiums }) => (
   <>
-    {/* Create a card for each pet */}
-    {pets.map((pet) => (
-      <div key={pet._id}>
+    {stadiums.map((stadium) => (
+      <div key={stadium._id}>
         <div className="card">
-          <img src={pet.image_url} />
-          <h5 className="pet-name">{pet.name}</h5>
+          <img src={stadium.image_url} />
+          <h5 className="stadium-name">{stadium.name}</h5>
           <div className="main-content">
-            <p className="pet-name">{pet.name}</p>
-            <p className="owner">Owner: {pet.owner_name}</p>
-
-            {/* Extra Pet Info: Likes and Dislikes */}
-            <div className="likes info">
-              <p className="label">Likes</p>
-              <ul>
-                {pet.likes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-            <div className="dislikes info">
-              <p className="label">Dislikes</p>
-              <ul>
-                {pet.dislikes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-
+            <p className="stadium-name">{stadium.name}</p>
+            <p className="owner">Owner: {stadium.owner_name}</p>
             <div className="btn-container">
-              <Link href="/[id]/edit" as={`/${pet._id}/edit`} legacyBehavior>
+              <Link
+                href="/[id]/edit"
+                as={`/${stadium._id}/edit`}
+                legacyBehavior
+              >
                 <button className="btn edit">Edit</button>
               </Link>
-              <Link href="/[id]" as={`/${pet._id}`} legacyBehavior>
+              <Link href="/[id]" as={`/${stadium._id}`} legacyBehavior>
                 <button className="btn view">View</button>
               </Link>
             </div>
@@ -45,21 +29,21 @@ const Index = ({ pets }) => (
       </div>
     ))}
   </>
-)
+);
 
-/* Retrieves pet(s) data from mongodb database */
+/* Retrieves stadium(s) data from mongodb database */
 export async function getServerSideProps() {
-  await dbConnect()
+  await dbConnect();
 
   /* find all the data in our database */
-  const result = await Pet.find({})
-  const pets = result.map((doc) => {
-    const pet = doc.toObject()
-    pet._id = pet._id.toString()
-    return pet
-  })
+  const result = await Stadium.find({});
+  const stadiums = result.map((doc) => {
+    const stadium = doc.toObject();
+    stadium._id = stadium._id.toString();
+    return stadium;
+  });
 
-  return { props: { pets: pets } }
+  return { props: { stadiums: stadiums } };
 }
 
-export default Index
+export default Index;

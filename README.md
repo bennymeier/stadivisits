@@ -8,6 +8,7 @@
 - Mongoose
 - MongoDB
 - Next-Auth
+- Package Manager: pnpm
 
 ### Database Models
 
