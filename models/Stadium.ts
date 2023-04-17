@@ -38,7 +38,7 @@ try {
   Stadium = mongoose.model('Stadium');
 }
 
-export default Stadium;
+export default Stadium as any;
 // const Stadium =
 //   mongoose.models.stadiumSchema || mongoose.model('Stadium', stadiumSchema);
 
