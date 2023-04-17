@@ -12,7 +12,9 @@ export default function Stadiums({ stadiums }) {
   return (
     <Box>
       <PageHeader breadcrumbs={breadcrumb} />
-      <Heading>All Stadiums <Badge fontSize="lg">{stadiums.length}</Badge></Heading>
+      <Heading>
+        All Stadiums <Badge fontSize="lg">{stadiums.length}</Badge>
+      </Heading>
       <SimpleGrid minChildWidth="240px" spacing="40px">
         {stadiums.map((stadium) => (
           <StadiumCard key={stadium._id} data={stadium} />
@@ -25,9 +27,9 @@ export default function Stadiums({ stadiums }) {
 export async function getServerSideProps() {
   await dbConnect();
 
-  const result = await Stadium.find({});
+  const result = await Stadium.find({}).lean();
   const stadiums = result.map((doc) => {
-    const stadium = doc.toObject();
+    const stadium = doc;
     stadium._id = stadium._id.toString();
     stadium.createdAt = stadium.createdAt.toString();
     stadium.updatedAt = stadium.updatedAt.toString();

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import dbConnect from '../lib/dbConnect';
 import Stadium from '../models/Stadium';
-import { Box, Button, SimpleGrid } from '@chakra-ui/react';
+import { Box, Button, SimpleGrid, useToast } from '@chakra-ui/react';
 import { fakeStadiums, fakeUsers } from '../utils/getFakeData';
 import StadiumCard from '../components/StadiumCard';
 
 const Index = ({ stadiums }) => {
+  const toast = useToast();
   const postStadium = async (form) => {
     try {
       const res = await fetch('/api/stadiums', {
@@ -45,15 +46,49 @@ const Index = ({ stadiums }) => {
   };
 
   const generateStadiums = () => {
-    const stadiums = fakeStadiums;
-    console.log('Stadiums: ', stadiums);
-    stadiums.map((stadium) => postStadium(stadium));
+    try {
+      const stadiums = fakeStadiums;
+      console.log('Stadiums: ', stadiums);
+      stadiums.map((stadium) => postStadium(stadium));
+      toast({
+        title: 'Success',
+        description: 'Stadiums generated.',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
+    } catch (err) {
+      toast({
+        title: 'Error',
+        description: 'Failed to create stadiums.',
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+    }
   };
 
   const generateUsers = () => {
-    const users = fakeUsers;
-    console.log('Users: ', users);
-    users.map((user) => postUser(user));
+    try {
+      const users = fakeUsers;
+      console.log('Users: ', users);
+      users.map((user) => postUser(user));
+      toast({
+        title: 'Success',
+        description: 'Users generated.',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
+    } catch (err) {
+      toast({
+        title: 'Error',
+        description: 'Failed to create users.',
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+    }
   };
   return (
     <>
