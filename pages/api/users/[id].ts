@@ -1,7 +1,11 @@
 import dbConnect from '../../../lib/dbConnect';
-import Stadium from '../../../models/Stadium';
+import User from '../../../models/User';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const {
     query: { id },
     method,
@@ -12,11 +16,11 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const stadium = await Stadium.findById(id);
-        if (!stadium) {
+        const user = await User.findById(id);
+        if (!user) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: stadium });
+        res.status(200).json({ success: true, data: user });
       } catch (error) {
         res.status(400).json({ success: false });
       }
@@ -24,14 +28,14 @@ export default async function handler(req, res) {
 
     case 'PUT':
       try {
-        const stadium = await Stadium.findByIdAndUpdate(id, req.body, {
+        const user = await User.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!stadium) {
+        if (!user) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: stadium });
+        res.status(200).json({ success: true, data: user });
       } catch (error) {
         res.status(400).json({ success: false });
       }
@@ -39,8 +43,8 @@ export default async function handler(req, res) {
 
     case 'DELETE':
       try {
-        const deletedStadium = await Stadium.deleteOne({ _id: id });
-        if (!deletedStadium) {
+        const deletedUser = await User.deleteOne({ _id: id });
+        if (!deletedUser) {
           return res.status(400).json({ success: false });
         }
         res.status(200).json({ success: true, data: {} });

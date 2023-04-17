@@ -1,8 +1,7 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Box } from '@chakra-ui/react';
 import '../css/style.css';
 import '../css/form.css';
 import Head from 'next/head';
-import Link from 'next/link';
 import Navbar from '../components/Navbar';
 
 function Stadivists({ Component, pageProps }) {
@@ -13,7 +12,9 @@ function Stadivists({ Component, pageProps }) {
           <title>Stadivists</title>
         </Head>
         <Navbar />
-        <Component {...pageProps} />
+        <Box padding={4}>
+          <Component {...pageProps} />
+        </Box>
       </ChakraProvider>
     </>
   );

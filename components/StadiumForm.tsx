@@ -12,13 +12,13 @@ import {
   Button,
 } from '@chakra-ui/react';
 
-const StadiumForm = ({ formId, stadiumForm, forNewStadium = true }) => {
+const StadiumForm = ({ stadiumForm, forNewStadium = true }) => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({ defaultValues: stadiumForm });
   const [error, setError] = useState(null);
   const onSubmit = (data) => {
     console.log(data);
-    postData(data);
+    putData(data);
   };
   const contentType = 'application/json';
 
@@ -103,12 +103,8 @@ const StadiumForm = ({ formId, stadiumForm, forNewStadium = true }) => {
             <FormLabel>Image URL</FormLabel>
             <Input {...register('image', { required: true })} />
           </FormControl>
-          <FormControl id="description">
-            <FormLabel>Description</FormLabel>
-            <Textarea {...register('description')} />
-          </FormControl>
           <FormControl id="submit">
-            <Button type="submit">Create Stadium</Button>
+            <Button type="submit">Edit Stadium</Button>
           </FormControl>
         </form>
       </Box>

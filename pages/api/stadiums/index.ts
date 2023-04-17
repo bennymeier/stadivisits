@@ -1,7 +1,11 @@
 import dbConnect from '../../../lib/dbConnect';
 import Stadium from '../../../models/Stadium';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { method } = req;
 
   await dbConnect();
