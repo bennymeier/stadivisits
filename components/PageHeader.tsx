@@ -16,7 +16,7 @@ interface PageHeaderProps {
 }
 export default function PageHeader({ breadcrumbs }: PageHeaderProps) {
   return (
-    <Box>
+    <Box borderBottom="1px" borderColor="gray.300" pb="2">
       <Breadcrumb
         spacing="8px"
         separator={<ChevronRightIcon color="gray.500" />}

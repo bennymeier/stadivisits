@@ -1,6 +1,4 @@
 import { ChakraProvider, Box } from '@chakra-ui/react';
-import '../css/style.css';
-import '../css/form.css';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 

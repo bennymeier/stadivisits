@@ -4,12 +4,12 @@ const { Schema } = mongoose;
 const commentSchema = new Schema(
   {
     author: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     stadium: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Stadium',
       required: true,
     },

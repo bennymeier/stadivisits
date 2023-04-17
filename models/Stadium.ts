@@ -24,8 +24,8 @@ const stadiumSchema = new Schema<IStadium>(
     latitude: { type: Number },
     capacity: { type: Number, required: true },
     image: { type: String, required: true },
-    visitedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    visitedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   },
   { timestamps: true }
 );

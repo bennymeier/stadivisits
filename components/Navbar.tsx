@@ -21,6 +21,8 @@ import { Link } from '@chakra-ui/next-js';
 const Links = [
   { url: '/', text: 'Home' },
   { url: '/stadiums', text: 'Stadiums' },
+  { url: '/comments', text: 'Comments' },
+  { url: '/users', text: 'Users' },
   { url: '/add-stadium', text: 'Add Stadium' },
 ];
 

@@ -21,6 +21,7 @@ export default function StadiumCard({ data }) {
         rounded={'md'}
         p={6}
         overflow={'hidden'}
+        // _hover={{ transform: 'translate(0, -5px)', transition: '0.5s' }}
       >
         <Box
           h={'210px'}
@@ -29,6 +30,8 @@ export default function StadiumCard({ data }) {
           mx={-6}
           mb={6}
           pos={'relative'}
+          transition="0.4s"
+          _hover={{ transform: 'scale(1.04)' }}
         >
           <Image
             src={image}

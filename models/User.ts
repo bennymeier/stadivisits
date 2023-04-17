@@ -7,7 +7,7 @@ const userSchema = new Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     avatar: { type: String },
-    visitedStadiums: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Stadium' }],
+    visitedStadiums: [{ type: Schema.Types.ObjectId, ref: 'Stadium' }],
   },
   { timestamps: true }
 );

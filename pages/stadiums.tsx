@@ -1,12 +1,18 @@
-import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Badge, Box, Heading, SimpleGrid } from '@chakra-ui/react';
+import PageHeader from '../components/PageHeader';
 import StadiumCard from '../components/StadiumCard';
 import dbConnect from '../lib/dbConnect';
 import Stadium from '../models/Stadium';
 
 export default function Stadiums({ stadiums }) {
+  const breadcrumb = [
+    { href: '/', name: 'Home' },
+    { href: '/stadiums', name: 'Stadiums' },
+  ];
   return (
     <Box>
-      <Heading>All Stadiums</Heading>
+      <PageHeader breadcrumbs={breadcrumb} />
+      <Heading>All Stadiums <Badge fontSize="lg">{stadiums.length}</Badge></Heading>
       <SimpleGrid minChildWidth="240px" spacing="40px">
         {stadiums.map((stadium) => (
           <StadiumCard key={stadium._id} data={stadium} />
