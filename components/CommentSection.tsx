@@ -40,10 +40,12 @@ export default function CommentSection({ comments, users }) {
             <Flex alignItems="center" gap="12px" flexWrap="wrap">
               <Avatar
                 size="xs"
-                name={comment.author.username}
+                name={`${comment.author.firstname} ${comment.author.lastname}`}
                 src={comment.author.avatar}
               />{' '}
-              <Heading fontSize="md">{comment.author.username}</Heading>
+              <Heading fontSize="md">
+                {comment.author.firstname} {comment.author.lastname}
+              </Heading>
               <Text color="gray.400" fontSize="2xs">
                 {new Date(comment.createdAt).toLocaleDateString()}
               </Text>

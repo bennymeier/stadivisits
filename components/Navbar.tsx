@@ -26,7 +26,9 @@ const Links = [
   { url: '/stadiums', text: 'Stadiums' },
   { url: '/comments', text: 'Comments' },
   { url: '/users', text: 'Users' },
-  { url: '/add-stadium', text: 'Add Stadium' },
+  // { url: '/add-stadium', text: 'Add Stadium' },
+  { url: '/register', text: 'Sign up' },
+  { url: '/login', text: 'Sign in' },
 ];
 
 export default function Simple() {

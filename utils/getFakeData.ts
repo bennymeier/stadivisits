@@ -12,7 +12,8 @@ const fakeStadiums = Array.from({ length: 4 }).map(() => ({
 }));
 
 const fakeUsers = Array.from({ length: 4 }).map(() => ({
-  username: faker.internet.userName(),
+  firstname: faker.name.firstName(),
+  lastname: faker.name.lastName(),
   email: faker.internet.email(),
   password: faker.internet.password(),
   avatar: faker.image.avatar(),

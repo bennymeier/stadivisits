@@ -39,10 +39,12 @@ export default function Comments({ comments }) {
                   <Flex alignItems="center" gap="12px">
                     <Avatar
                       size="xs"
-                      name={comment.author.username}
+                      name={`${comment.author.firstname} ${comment.author.lastname}`}
                       src={comment.author.avatar}
                     />{' '}
-                    <Text fontSize="md">{comment.author.username}</Text>
+                    <Text fontSize="md">
+                      {comment.author.firstname} {comment.author.lastname}
+                    </Text>
                   </Flex>
                 </Td>
                 <Td maxWidth="100px" overflow="hidden" textOverflow="ellipsis">

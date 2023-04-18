@@ -71,7 +71,7 @@ const CommentForm = ({ commentForm = null, users }) => {
             >
               {users.map((user) => (
                 <option key={user._id} value={user._id}>
-                  {user.username}
+                  {user.firstname} {user.lastname}
                 </option>
               ))}
             </Select>
