@@ -38,6 +38,7 @@ async function dbConnect() {
     cached.conn = await cached.promise;
     // todo workaround for HMR. It remove old model before added new ones
     Object.keys(mongoose.connection.models).forEach((key) => {
+      // @ts-ignore
       delete mongoose.connection.models[key];
     });
   } catch (e) {
