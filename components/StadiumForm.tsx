@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { mutate } from 'swr';
 import { useForm } from 'react-hook-form';
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
-  Select,
-  Button,
-} from '@chakra-ui/react';
+import { Box, FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 
-const StadiumForm = ({ stadiumForm, forNewStadium = true }) => {
+const StadiumForm = ({ defaultValues = null }) => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm({ defaultValues: stadiumForm });
-  const [error, setError] = useState(null);
+  const { register, handleSubmit } = useForm({ defaultValues });
   const onSubmit = (data) => {
     console.log(data);
     putData(data);
@@ -65,20 +56,9 @@ const StadiumForm = ({ stadiumForm, forNewStadium = true }) => {
     } catch (error) {}
   };
 
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const errs = formValidate();
-  //   if (Object.keys(errs).length === 0) {
-  //     forNewStadium ? postData(form) : putData(form);
-  //   } else {
-  //     setErrors({ errs });
-  //   }
-  // };
-
   return (
     <>
       <Box>
-        {error && <p>{error}</p>}
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl id="name">
             <FormLabel>Name</FormLabel>
@@ -104,7 +84,7 @@ const StadiumForm = ({ stadiumForm, forNewStadium = true }) => {
             <Input {...register('image', { required: true })} />
           </FormControl>
           <FormControl id="submit">
-            <Button type="submit">Edit Stadium</Button>
+            <Button type="submit">Add Stadium</Button>
           </FormControl>
         </form>
       </Box>

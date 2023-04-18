@@ -18,7 +18,7 @@ import {
   Switch,
 } from '@chakra-ui/react';
 import { FaUserAlt, FaRegMoon, FaSignOutAlt } from 'react-icons/fa';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 
 const Links = [
@@ -78,6 +78,7 @@ export default function Simple() {
                 cursor={'pointer'}
                 minW={0}
                 _hover={{ textDecoration: 'none' }}
+                rightIcon={<ChevronDownIcon />}
               >
                 <Flex alignItems="center" gap="10px">
                   <Avatar
@@ -94,7 +95,7 @@ export default function Simple() {
                   </Box>
                 </Flex>
               </MenuButton>
-              <MenuList>
+              <MenuList minWidth="unset">
                 <MenuItem icon={<FaUserAlt />}>Account settings</MenuItem>
                 <MenuItem icon={<FaRegMoon />}>
                   Dark mode <Switch ml="3" />

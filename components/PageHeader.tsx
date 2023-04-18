@@ -1,11 +1,18 @@
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
   Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Flex,
 } from '@chakra-ui/react';
 import { Link } from '@chakra-ui/next-js';
+import { FaFutbol, FaPlus, FaUserAlt } from 'react-icons/fa';
 interface IBreadcrum {
   href: string;
   name: string;
@@ -13,10 +20,20 @@ interface IBreadcrum {
 }
 interface PageHeaderProps {
   breadcrumbs: IBreadcrum[];
+  showAddButtons?: boolean;
 }
-export default function PageHeader({ breadcrumbs }: PageHeaderProps) {
+export default function PageHeader({
+  breadcrumbs,
+  showAddButtons = false,
+}: PageHeaderProps) {
   return (
-    <Box borderBottom="1px" borderColor="gray.300" pb="2">
+    <Flex
+      borderBottom="1px"
+      borderColor="gray.300"
+      pb="2"
+      justifyContent="space-between"
+      alignItems="center"
+    >
       <Breadcrumb
         spacing="8px"
         separator={<ChevronRightIcon color="gray.500" />}
@@ -32,6 +49,37 @@ export default function PageHeader({ breadcrumbs }: PageHeaderProps) {
           </BreadcrumbItem>
         ))}
       </Breadcrumb>
-    </Box>
+      {showAddButtons && (
+        <Box>
+          <Menu>
+            <MenuButton
+              as={Button}
+              leftIcon={<FaPlus />}
+              rightIcon={<ChevronDownIcon />}
+            >
+              Add
+            </MenuButton>
+            <MenuList minWidth="unset">
+              <MenuItem
+                icon={<FaUserAlt />}
+                as={Link}
+                href="/add-user"
+                _hover={{ textDecoration: 'none' }}
+              >
+                Add User
+              </MenuItem>
+              <MenuItem
+                icon={<FaFutbol />}
+                as={Link}
+                href="/add-stadium"
+                _hover={{ textDecoration: 'none' }}
+              >
+                Add Stadium
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
+      )}
+    </Flex>
   );
 }

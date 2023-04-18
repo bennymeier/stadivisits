@@ -24,7 +24,7 @@ export default async function handler(
         const stadium = await Stadium.create(req.body);
         res.status(201).json({ success: true, data: stadium });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, error });
       }
       break;
     default:

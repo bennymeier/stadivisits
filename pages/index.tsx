@@ -21,8 +21,22 @@ const Index = ({ stadiums }) => {
       if (!res.ok) {
         throw new Error(`${res.status}`);
       }
+      toast({
+        title: 'Success',
+        description: 'Stadiums generated.',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
     } catch (error) {
       console.error(error);
+      toast({
+        title: 'Error',
+        description: 'Failed to create stadiums.',
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
 
@@ -40,39 +54,6 @@ const Index = ({ stadiums }) => {
       if (!res.ok) {
         throw new Error(`${res.status}`);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const generateStadiums = () => {
-    try {
-      const stadiums = fakeStadiums;
-      console.log('Stadiums: ', stadiums);
-      stadiums.map((stadium) => postStadium(stadium));
-      toast({
-        title: 'Success',
-        description: 'Stadiums generated.',
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      });
-    } catch (err) {
-      toast({
-        title: 'Error',
-        description: 'Failed to create stadiums.',
-        status: 'error',
-        duration: 2000,
-        isClosable: true,
-      });
-    }
-  };
-
-  const generateUsers = () => {
-    try {
-      const users = fakeUsers;
-      console.log('Users: ', users);
-      users.map((user) => postUser(user));
       toast({
         title: 'Success',
         description: 'Users generated.',
@@ -80,7 +61,8 @@ const Index = ({ stadiums }) => {
         duration: 2000,
         isClosable: true,
       });
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       toast({
         title: 'Error',
         description: 'Failed to create users.',
@@ -89,6 +71,18 @@ const Index = ({ stadiums }) => {
         isClosable: true,
       });
     }
+  };
+
+  const generateStadiums = () => {
+    const stadiums = fakeStadiums;
+    console.log('Stadiums: ', stadiums);
+    stadiums.map((stadium) => postStadium(stadium));
+  };
+
+  const generateUsers = () => {
+    const users = fakeUsers;
+    console.log('Users: ', users);
+    users.map((user) => postUser(user));
   };
   return (
     <>

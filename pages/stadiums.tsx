@@ -11,7 +11,7 @@ export default function Stadiums({ stadiums }) {
   ];
   return (
     <Box>
-      <PageHeader breadcrumbs={breadcrumb} />
+      <PageHeader breadcrumbs={breadcrumb} showAddButtons />
       <Heading>
         All Stadiums <Badge fontSize="lg">{stadiums.length}</Badge>
       </Heading>

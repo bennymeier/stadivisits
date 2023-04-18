@@ -18,6 +18,7 @@ import {
 import PageHeader from '../../components/PageHeader';
 import CommentSection from '../../components/CommentSection';
 import User from '../../models/User';
+import VisitedStar from '../../components/VisitedStar';
 
 const StadiumPage = ({ stadium, comments, users }) => {
   const { name, capacity, country, city, image, _id } = stadium;
@@ -59,7 +60,7 @@ const StadiumPage = ({ stadium, comments, users }) => {
       <PageHeader breadcrumbs={breadcrumb} />
       <Grid gridTemplateColumns={'auto minmax(200px, 300px)'}>
         <Box>
-          <Flex justifyContent="center" mb="3">
+          <Flex justifyContent="center" mb="3" alignItems="flex-end" gap="2">
             <Heading fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}>
               <Text
                 as={'span'}
@@ -78,6 +79,7 @@ const StadiumPage = ({ stadium, comments, users }) => {
                 {name}
               </Text>
             </Heading>
+            <VisitedStar stadium={stadium} users={users} />
           </Flex>
           <Stack direction={{ base: 'column', md: 'row' }}>
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
